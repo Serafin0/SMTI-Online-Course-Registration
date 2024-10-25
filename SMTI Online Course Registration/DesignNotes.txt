@@ -1,0 +1,69 @@
+﻿Who are the users of this web app?
+     1. Student(s)
+        - To login
+        - To register for their courses
+        - To see all information for Students, Courses and Users widly available
+
+Question 1 DB Design and Implementation (20 points)
+
+Database Name: SMTIOnlineCourseRegistrationDB
+Tables: 
+    Students (
+    StudentNumber INT PRIMARY KEY,
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    Email NVARCHAR(100)
+    );
+
+    (1234, 'Mary', 'Brown', 'mary@yahoo.com'),
+    (1235, 'Richard', 'Green', 'richard@gmail.com'),
+    (1236, 'Michael', 'Freitag', 'michael@hotmail.com');
+
+   Users (
+    UserCode INT PRIMARY KEY,
+    Password NVARCHAR(50)
+    );
+
+    (1234, 'Mary1234'),
+    (1235, 'Richard1235'),
+    (1236, 'Michael1236');
+
+    Courses
+    Courses (
+    CourseNumber NVARCHAR(10) PRIMARY KEY,
+    CourseTitle NVARCHAR(100),
+    TotalHour INT
+    );
+
+    ('COMP101', 'Advanced Programming in C#', 75),
+    ('COMP102', 'Structured Programming', 90),
+    ('COMP103', 'Web Application I', 90),
+    ('COMP104', 'Web Application II', 75),
+    ('COMP105', 'ASP.Net Core MVC', 90);
+
+    Registrations
+    Registrations (
+    RegistrationId INT IDENTITY(1,1) PRIMARY KEY,
+    StudentNumber INT FOREIGN KEY REFERENCES Students(StudentNumber),
+    CourseNumber NVARCHAR(10) FOREIGN KEY REFERENCES Courses(CourseNumber)
+    );
+
+Question 2 : Web App Design (30 points)
+         
+         GUI
+            - ListStudentsAndCourses [for Users]
+            - Login.aspx [ for Teacher only]
+            - RegisterCourses.aspx [ for Students]
+
+         BLL
+            - Course.cs
+            - Registration.cs
+            - Student.cs
+            - User.cs
+
+         DAL
+            - CourseDB.cs
+            - Registration.cs
+            - Student.cs
+            - User.cs
+            - UtilityDB.cs
